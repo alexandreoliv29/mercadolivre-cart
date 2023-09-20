@@ -17,7 +17,9 @@ export const Products = () => {
 
     return (
         <section className="products container">
-            <ProductCard />
+            {
+                products.map((product) => <ProductCard data={product} />)
+            }
         </section>
     )
 }

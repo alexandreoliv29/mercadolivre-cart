@@ -1,16 +1,26 @@
+import fetchProducts from '../../api/fetchProducts'
+import { formatCurrency } from '../../utils/formatCurrency'
 import './ProductCard.css'
+import propTypes from 'prop-types'
 
+export const ProductCard = ({ data }: any) => {
 
-export const ProductCard = () => {
+    const { title, thumbnail, price } = data
+
     return (
         <section className="product-card">
-            <img src="http://http2.mlstatic.com/D_932360-MLA46545868431_062021-W.jpg" alt="product" className="card_image" />
-
-            <div className="card_infos">
-                <h2 className="card_prices">R$ 200,20</h2>
-                <h2 className="card_title">Manual do dev</h2>
+            <div className="card__infos">
+                <img
+                    src={thumbnail.replace(/\w\.jpg/gi, 'W.jpg')} alt="product"
+                    className="card_image" />
+                <h2 className="card__price">{formatCurrency(price)}</h2>
+                <h2 className="card__title">{title}</h2>
             </div>
-            <button type="button" className="button_add_cart">+</button>
+            <button type="button" className="button__add-cart">+</button>
         </section>
     )
 }
+
+ProductCard.propTypes = {
+    data: propTypes.shape({}),
+}.isRequired;
