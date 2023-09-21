@@ -1,4 +1,3 @@
-import fetchProducts from '../../api/fetchProducts'
 import { formatCurrency } from '../../utils/formatCurrency'
 import './ProductCard.css'
 import propTypes from 'prop-types'
@@ -23,4 +22,4 @@ export const ProductCard = ({ data }: any) => {
 
 ProductCard.propTypes = {
     data: propTypes.shape({}),
-}.isRequired;
+}
