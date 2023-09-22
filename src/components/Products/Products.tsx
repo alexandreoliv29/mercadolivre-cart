@@ -1,34 +1,33 @@
-import { useEffect, useState } from 'react'
-import './Products.css'
-import fetchProducts from '../../api/fetchProducts'
-import { ProductCard } from '../ProductCard/ProductCard'
-import Loading from '../Loading/Loading'
+import { useEffect, useContext } from 'react';
 
-export const Products = () => {
+import './Products.css';
+import fetchProducts from '../../api/fetchProducts';
+import AppContext from '../../context/AppContext';
+import { ProductCard } from '../ProductCard/ProductCard';
+import Loading from '../Loading/Loading';
 
-    const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState<boolean>(true)
+function Products() {
+
+    const { products, setProducts, loading, setLoading } = useContext(AppContext);
+
 
     useEffect(() => {
-        fetchProducts('iphone').then((response: any) => {
-            setProducts(response)
-            setLoading(false)
-        }).catch((err: any) => {
-            console.log(err)
+        fetchProducts('iphone').then((response) => {
+            setProducts(response);
+            setLoading(false);
         });
-    }, [])
-    console.log(products)
+    }, []);
+
+    console.log("products: ", products)
 
     return (
-        <>
-            {loading ?
-                <Loading />
-                :
-                <section className="products container">
-                    {products.map((product) => <ProductCard data={product} />)}
-                </section>
-            }
-        </>
+        (loading && <Loading />) || (
+            <section className="products container">
+                {products.map((product) => <ProductCard key={product.id} data={product} />)}
+            </section>
+        )
 
-    )
+    );
 }
+
+export default Products;

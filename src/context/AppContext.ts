@@ -11,6 +11,17 @@ interface AppContextType {
     setIsCartVisible: Dispatch<SetStateAction<boolean>>;
 }
 
-const AppContext = createContext<AppContextType | undefined>(undefined);
+const defaultValue: AppContextType = {
+    products: [],
+    setProducts: () => { },
+    loading: true,
+    setLoading: () => { },
+    cartItems: [],
+    setCartItems: () => { },
+    isCartVisible: false,
+    setIsCartVisible: () => { },
+}
+
+const AppContext = createContext<AppContextType>(defaultValue);
 
 export default AppContext;

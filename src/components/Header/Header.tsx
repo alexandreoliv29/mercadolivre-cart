@@ -1,5 +1,5 @@
 import { CartButton } from "../CartButton/CartButton"
-import { SearchBar } from "../SearchBar/SearchBar"
+import SearchBar from "../SearchBar/SearchBar"
 import './Header.css'
 
 

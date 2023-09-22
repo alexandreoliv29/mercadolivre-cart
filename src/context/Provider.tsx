@@ -21,6 +21,8 @@ function Provider({ children }: any) {
         setIsCartVisible,
     };
 
+    console.log("products no provider: ", products)
+
     return (
         <AppContext.Provider value={value}>
             {children}
