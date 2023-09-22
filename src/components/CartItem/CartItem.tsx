@@ -8,10 +8,10 @@ import formatCurrency from '../../utils/formatCurrency';
 function CartItem({ data }: any) {
 
     const { cartItems, setCartItems } = useContext(AppContext);
-    const {  thumbnail, title, price } = data;
+    const { id, thumbnail, title, price } = data;
 
     const handleRemoveItem = () => {
-        const updatedItems = cartItems.filter((item) => item);
+        const updatedItems = cartItems.filter((item) => item.id != id);
         setCartItems(updatedItems);
     };
 
